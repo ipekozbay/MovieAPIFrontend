@@ -21,7 +21,7 @@ function App() {
     }
 
   }
-
+ 
   useEffect(() => {
     getMovies();
   }, [])
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <Route path='/' element={<Layout/>}>
-        <Route path='/' element={<Home />}>
+        <Route path='/' element={<Home movies={movies} />}>
 
         </Route>
       </Route>
