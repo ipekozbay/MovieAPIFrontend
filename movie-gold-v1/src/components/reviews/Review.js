@@ -9,10 +9,26 @@ import React from 'react'
 
 import React from 'react'
 
-const Review = () => {
+const Review = ({getMovieData, movie, reviews, setReviews}) => {
+
+    const revText = useRef();
+    let params =useParams();
+    const movieId = params.movieId;
+
+    useEffect(() => {
+        getMovieData(movieId);
+    },[])
+
   return (
     <div>
-      
+        <Row>
+            <Col><h3>Reviews</h3></Col>
+        </Row>
+        <Row className='mt-2'>
+            <Col>
+                <img src='' alt=''/>
+            </Col>
+        </Row>
     </div>
   )
 }
