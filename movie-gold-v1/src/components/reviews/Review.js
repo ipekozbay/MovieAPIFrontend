@@ -43,8 +43,29 @@ const Review = ({ getMovieData, movie, reviews, setReviews }) => {
                             </Row>
                         </>
                     }
+                    {
+                        reviews?.map((r) => {
+                            return (
+                                <>
+                                    <Row>
+                                        <Col>{r.body}</Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <hr />
+                                        </Col>
+                                    </Row>
+                                </>
+                            )
+                        })
+                    }
                 </Col>
             </Row>
+            <Row>
+            <Col>
+                <hr />
+            </Col>
+        </Row>       
         </div>
     )
 }
