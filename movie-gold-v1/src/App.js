@@ -10,6 +10,9 @@ import Trailer from './components/trailer/Trailer';
 function App() {
 
   const [movies, setMovies] = useState();
+  const [movie, setMovie] = useState();
+  const [reviews, setReviews] = useState();
+
 
   const getMovies = async () => {
 
@@ -23,17 +26,31 @@ function App() {
     }
 
   }
- 
+
+  const getMovieData = async (movieId) => {
+    try {
+
+      const response = await api.get(`/api/v1/movies/${movieId}`);
+      const singleMovie = response.data;
+      setMovie(singleMovie)
+      setReviews(singleMovie.reviews);
+
+    } catch (error) {
+      console.error(err);
+    }
+  }
+
   useEffect(() => {
     getMovies();
   }, [])
 
   return (
     <div className="App">
-      <Header/>
-      <Route path='/' element={<Layout/>}>
+      <Header />
+      <Route path='/' element={<Layout />}>
         <Route path='/' element={<Home movies={movies} />}>
-        <Route path='/Trailer/:ytTrailerId' element={<Trailer/>}></Route>
+          <Route path='/Trailer/:ytTrailerId' element={<Trailer />}></Route>
+          <Route path='Reviews/:movieId' element= {<Reviews getMovieData={getMovieData} reviews={reviews} setReviews = {setReviews} />}></Route>
         </Route>
       </Route>
     </div>
