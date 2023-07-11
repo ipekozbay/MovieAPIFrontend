@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
 import Header from './components/header/Header'
 import Trailer from './components/trailer/Trailer';
+import NotFound from './components/notFound/NotFound';
 
 function App() {
 
@@ -50,7 +51,9 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<Home movies={movies} />}>
           <Route path='/Trailer/:ytTrailerId' element={<Trailer />}></Route>
-          <Route path='Reviews/:movieId' element= {<Reviews getMovieData={getMovieData} reviews={reviews} setReviews = {setReviews} />}></Route>
+          <Route path='Reviews/:movieId' element= {<Reviews getMovieData={getMovieData} movie={movie} reviews={reviews} setReviews = {setReviews} />}></Route>
+          <Route path='*' element= {<NotFound/>}></Route>
+
         </Route>
       </Route>
     </div>
